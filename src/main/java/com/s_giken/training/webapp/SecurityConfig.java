@@ -40,10 +40,11 @@ public class SecurityConfig {
                         .loginPage("/login")
                         .failureUrl("/login?error")
                         .permitAll())
-                .logout((logout) -> logout
-                        .logoutSuccessUrl("/"))
+                .logout((logout) -> logout.logoutSuccessUrl("/"))
                 .authorizeHttpRequests((authorize) -> authorize
+                        // h2-console以下のアクセスは、Spring Security の対象外
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
+                        // それ以外のは全て認証が日宇町
                         .anyRequest().authenticated());
 
         return http.build();
