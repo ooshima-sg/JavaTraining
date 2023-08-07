@@ -32,8 +32,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain webSecurityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // CSRF対策を無効化
-                .headers((header) -> header.frameOptions().disable())
+                .csrf((csrf) -> csrf.disable()) // CSRF対策を無効化
+                .headers((header) -> header.frameOptions((frame) -> frame.disable()))
                 .formLogin((form) -> form
                         .defaultSuccessUrl("/")
                         .loginProcessingUrl("/login")
