@@ -1,1 +1,2 @@
-rootProject.name = 'webapp'
+rootProject.name = 'SgJavaTraining'
+include 'webapp'
